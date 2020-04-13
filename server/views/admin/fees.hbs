@@ -1,0 +1,328 @@
+<span id="fees-page"></span>
+<div class="container-fluid">
+  <div class="row">
+    {{>_adminSidebar}}
+    <div class="col-12 col-lg-9">
+
+      <div class="row py-2 mx-auto">
+        <div class="col-12 col-md-10 mb-1">
+          <form action="" method="get">
+            <div class="input-group">
+              <input type="search" name="searchQuery" class="form-control"
+                placeholder="search for fees by title, category or level" />
+              <span class="input-group-prepend">
+                <button class="input-group-text bg-gray green font-weight-bold">
+                  SEARCH
+                  <i class="fas fa-search ml-1"></i>
+                </button>
+              </span>
+            </div>
+          </form>
+        </div>
+
+        <div class="col-12 col-md-2 mb-1">
+          <button class="btn bg-gray mx-auto d-block" data-toggle="modal" data-target="#new-fees-modal">
+            <i class="fas fa-plus"></i>
+            fee
+          </button>
+        </div>
+      </div>
+
+
+      <!-- paid fees -->
+      <div class="row py-3">
+        <div class="col-12 col-sm-12 mx-auto">
+          <div class="card">
+            <div class="card-header bg-orange">
+              <h4 class="card-title">Fees Payable</h4>
+            </div>
+            <div class="card-body scrollable" style="max-height: 75vh; overflow-y: scroll">
+
+              <table class="table table-striped" style="font-size: 1rem;">
+                <thead class="green text-uppercase">
+                  <tr>
+                    <th>
+                      sn
+                    </th>
+                    <th>
+                      title
+                    </th>
+                    <th class="text-center" colspan="2">Fee List</th>
+
+                    <th class="text-center">
+                      action
+                      <i class="fas fa-cog ml-3"></i>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody id="fees-pane"></tbody>
+              </table>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end of paid fees -->
+
+    </div>
+  </div>
+</div>
+
+
+<!-- new fees modal -->
+<div class="modal fade" id="new-fees-modal" data-backdrop="static">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">
+          New Fees
+        </h5>
+      </div>
+      <div class="modal-body">
+        <div class="text-center hidden alert" id="new-fee-msg"></div>
+        <form action="" method="POST" id="new-fee-form">
+          <div class="form-group">
+            <input type="text" name="title" placeholder="Fee title" class="form-control" autocomplete="off" />
+            <span id="titleError" class="error font-weight-bold d-block mt-1"></span>
+          </div>
+
+
+          <div class="card mb-1">
+            <div class="card-body" id="fee-list-pane-0">
+              <h5>Fee Lists</h5>
+              <hr class="socket">
+
+            </div>
+          </div>
+
+          <div class="form-group d-flex justify-content-between">
+            <button type="submit" class="btn bg-orange">
+              save
+              <i class="fas fa-save ml-2"></i>
+            </button>
+
+            <button class="btn btn-danger" data-dismiss="modal">
+              close
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end of new fees modal -->
+
+<!-- templates -->
+<script type="mustache/template" id="level-category-option-template">
+  \{{#levelCategories}}
+  <option value="\{{id}}">\{{name}}</option>
+  \{{/levelCategories}}
+</script>
+
+<script type="mustache/template" id="level-option-template">
+  <option value="">Select Level</option>
+  \{{#levels}}
+  <option value="\{{id}}">\{{name}}</option>
+  \{{/levels}}
+</script>
+
+<script type="mustache/template" id="fees-template">
+  \{{#fees}}
+  <tr>
+    <td>\{{sn}}</td>
+    <td>\{{title}}</td>
+    <td>
+      \{{#FeeLists}}
+        \{{Level.name}}
+        \{{^Level}}
+        \{{LevelCategory.name}}
+        \{{/Level}}
+        <br>
+      \{{/FeeLists}}
+    </td>
+    <td>
+        \{{#FeeLists}}
+          \{{amount}} <br>
+        \{{/FeeLists}}
+    </td>
+    <td>
+      <div class="d-flex justify-content-between align-items-center">
+        <button class="btn btn-sm btn-success m-1" data-toggle="modal" data-target="#edit-fees-modal-\{{id}}">
+          edit
+          
+        </button>
+        <button class="btn btn-sm btn-danger m-1 delete-fee" data-id="\{{id}}">
+          delete
+        </button>
+
+        <!-- fees edit modal -->
+        <div class="modal fade" id="edit-fees-modal-\{{id}}" data-backdrop="static">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">
+          Edit Fees
+        </h5>
+      </div>
+      <div class="modal-body">
+        <div class="text-center hidden alert" id="new-fee-msg"></div>
+        <form action="" method="POST" class="edit-fee-form">
+          <div class="form-group input-group">
+            <input type="text" name="title" placeholder="Fee title" class="form-control" value="\{{title}}" autocomplete="off"/>
+
+            <input type="hidden" name="id" value="\{{id}}">
+            <span class="input-group-append">
+              <button type="submit" class="bg-success text-light input-group-text">
+              update
+              <i class="fas fa-save ml-2"></i>
+            </button>
+            </span>
+            <span id="titleError" class="error font-weight-bold d-block mt-1"></span>
+          </div>
+        </form>
+
+
+          <div class="card mb-1">
+            <div class="card-body" id="fee-list-pane">
+              <h5>Fee Lists</h5>
+              <hr class="socket">
+
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Category</th>
+                    <th>Level</th>
+                    <th>Amount</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="fee-list-pane-table-\{{id}}">
+                  \{{#FeeLists}}
+                  <tr>
+                    <td>
+                      \{{LevelCategory.name}}
+                    </td>
+                    <td>
+                      \{{Level.name}} \{{^Level}}ALL\{{/Level}}
+                    </td>
+                    <td>
+                      \{{amount}}
+                    </td>
+                    <td>
+                      <button class="btn btn-sm btn-danger delete-fee-list" data-id="\{{id}}">
+                        delete
+                        <i class="fas fa-trash ml-1"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  \{{/FeeLists}}
+                </tbody>
+              </table>
+              <!-- Add new FeeList -->
+              <form action="" method="post" class="fee-list-form">
+                  <div class="mb-1" id="fee-list-0">
+                    <div class="row">
+                      <div class="col-3">
+                        <input type="number" name="amount" placeholder="Amount" class="form-control" value="\{{amount}}" autocomplete="off" />
+                        <span id="amountError" class="error font-weight-bold d-block mt-1"></span>
+                      </div>
+                      <div class="col-5">
+                        <select name="levelCategoryId" data-level-target="#level-pane-lists-\{{id}}"
+                          class="form-control level-category-pane">
+                          <option value="">Select Level Category</option>
+                        </select>
+                        <span id="levelCategoryIdError" class="error font-weight-bold d-block mt-1"></span>
+                      </div>
+
+                      <div class="col-4">
+                        <select name="levelId" id="level-pane-lists-\{{id}}" class="form-control">
+                          <option value="">...</option>
+                        </select>
+                        <span id="levelIdError" class="error font-weight-bold d-block mt-1"></span>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-4 d-flex justify-content-between mx-auto">
+                        <input type="hidden" name="feeId" value="\{{id}}" />
+                        <button type="submit" aria-role="button" class="btn btn-block btn-success mr-1">
+                          <span class="mr-1">update</span>
+                          <i class="fas fa-save"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+              </form>
+              <!-- End of add new FeeList -->
+            </div>
+          </div>
+
+
+          <div class="form-group d-flex justify-content-between">
+            <button class="btn btn-danger" data-dismiss="modal">
+              close
+            </button>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+        <!-- end of fees edit modal -->
+      </div>
+    </td>
+  </tr>
+  \{{/fees}}
+</script>
+
+<script type="mustache/template" id="fee-list-template">
+<div class="mb-1" id="fee-list-\{{id}}">
+  <div class="row">
+    <div class="col-3">
+      <input type="number" name="amount" placeholder="Amount" class="form-control" autocomplete="off" />
+      <span id="amountError" class="error font-weight-bold d-block mt-1"></span>
+    </div>
+    <div class="col-5">
+      <select name="levelCategoryId" data-level-target="#level-pane-\{{id}}"
+        class="form-control level-category-pane">
+        <option value="">Select Level Category</option>
+        \{{#data.levelCategories}}
+        <option value="\{{id}}">\{{name}}</option>
+        \{{/data.levelCategories}}
+      </select>
+      <span id="levelCategoryIdError" class="error font-weight-bold d-block mt-1"></span>
+    </div>
+
+    <div class="col-4">
+      <select name="levelId" id="level-pane-\{{id}}" class="form-control">
+        <option value="">...</option>
+      </select>
+      <span id="levelIdError" class="error font-weight-bold d-block mt-1"></span>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-4 d-flex justify-content-between mx-auto">
+      <button type="button" class="btn btn-success mr-1 add-fee-list" id="add-fee-list-\{{id}}" data-id="#fee-list-pane-0">
+        <span class="mr-1">add</span>
+        <i class="fas fa-plus"></i>
+      </button>
+      <button type="button" class="btn btn-danger delete-fee-list-btn" id="delete-fee-list-\{{id}}" disabled="true" data-fee-list-id="\{{id}}">
+        <span class="mr-1">delete</span>
+        <i class="fas fa-trash"></i>
+      </button>
+    </div>
+  </div>
+</div>
+</script>
+
+
+<script type="mustache/template" id="fee-list-table-template">
+  \{{#feeList}}
+  <tr>
+    <td>\{{LevelCategory.name}}</td>
+    <td>\{{Level.name}}</td>
+    <td>\{{amount}}</td>
+  </tr>
+  \{{/feeList}}
+</script>
+<!-- end of templates -->

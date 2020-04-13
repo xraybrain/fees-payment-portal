@@ -1,0 +1,335 @@
+<span id="admin-department-page"></span>
+<div class="container-fluid">
+  <div class="row">
+    {{>_adminSidebar}}
+    <div class="col-12 col-lg-9">
+
+      <div class="row py-2 mx-auto">
+        <div class="col-12 col-md-6 mb-2">
+          <form action="" method="get">
+            <div class="input-group">
+              <input type="search" name="searchQuery" class="form-control" placeholder="search by name or faculty" />
+              <span class="input-group-prepend">
+                <button class="input-group-text bg-gray green font-weight-bold">
+                  SEARCH
+                  <i class="fas fa-search ml-1"></i>
+                </button>
+              </span>
+            </div>
+          </form>
+        </div>
+
+        <div class="col-12 col-md-3 mb-2">
+          <button class="btn btn-warning btn-block" data-toggle="modal" data-target="#new-department-modal">
+            <i class="fas fa-plus mr-1 text-light"></i>
+            department
+          </button>
+        </div>
+        <div class="col-12 col-md-3 mb-2">
+          <button class="btn btn-warning btn-block" data-toggle="modal" data-target="#faculty-modal">
+            manage faculty
+          </button>
+        </div>
+      </div>
+
+
+      <!-- paid fees -->
+      <div class="row py-3">
+        <div class="col-12 col-sm-12 mx-auto">
+          <div class="card">
+            <div class="card-header bg-orange">
+              <h4 class="card-title">Departments</h4>
+            </div>
+            <div class="card-body scrollable">
+
+              <table class="table table-striped">
+                <thead class="green text-uppercase">
+                  <tr>
+                    <th>
+                      sn
+                    </th>
+                    <th>
+                      name
+                    </th>
+                    <th>
+                      faculty
+                    </th>
+                    <th class="text-center">
+                      action
+                      <i class="fas fa-cog ml-3"></i>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody id="departments-pane"></tbody>
+              </table>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end of paid fees -->
+
+    </div>
+  </div>
+
+
+  <!-- Faculty modal -->
+  <div class="modal fade" id="faculty-modal">
+    <div class="modal-dialog modal-lg">
+
+      <div class="modal-content bg-gray">
+        <div class="modal-header">
+          <h5>Faculty Management</h5>
+        </div>
+
+        <div class="modal-body">
+
+          <div class="card">
+            <div class="card-body">
+              <form action="" method="post" id="new-faculty-form">
+                <div class="input-group">
+                  <input type="text" name="name" id="faculty-name" class="form-control" placeholder="New Faculty"
+                    autocomplete="off" />
+
+                  <span class="input-group-prepend">
+                    <button type="submit" class="input-group-text bg-gray text-uppercase font-weight-bold">
+                      add
+                    </button>
+                  </span>
+                </div>
+                <div id="faculty-msg" class="py-1 text-center"></div>
+              </form>
+            </div>
+          </div>
+
+
+          <div class="card mt-2">
+
+            <div class="card-body">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>sn</th>
+                    <th>name</th>
+                    <th class="text-center">
+                      action
+                      <i class="fas fa-cog green"></i>
+                    </th>
+                  </tr>
+                </thead>
+
+                <tbody id="faculties-pane">
+
+                </tbody>
+
+              </table>
+            </div>
+
+          </div>
+
+          <div class="modal-footer">
+            <a href="javascript: void()" class="btn btn-danger" data-dismiss="modal">close</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- new department modal -->
+<div class="modal fade" id="new-department-modal">
+  <div class="modal-dialog">
+
+    <div class="modal-content bg-gray">
+      <div class="modal-header text-center">
+        <h5 class=""><span class="badge badge-warning">New</span> <span
+            class="badge bg-danger text-light">Department</span>
+        </h5>
+      </div>
+
+      <div class="modal-body">
+
+        <div class="card">
+          <div class="card-body">
+            <form action="" method="post" id="new-department-form">
+              <div class="form-group">
+                <input type="text" name="departmentName" class="form-control" placeholder="name of department"
+                  autocomplete="off" />
+                <span class="d-block error" id="departmentNameError"></span>
+              </div>
+
+              <div class="form-group">
+                <select name="facultyId" class="form-control faculties-department-pane">
+                  <option value="">Select Faculty</option>
+                </select>
+                <span class="d-block error" id="facultyIdError"></span>
+              </div>
+
+              <div class="form-group">
+                <button type="submit" class="btn btn-warning">
+                  save
+                  <i class="fas fa-save ml-3"></i>
+                </button>
+              </div>
+            </form>
+            <div class="text-center" id="department-msg"></div>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div class="modal-footer">
+        <a href="#" class="btn btn-sm btn-danger" data-dismiss="modal">cancel</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- Templates -->
+<script type="mustache/template" id="faculties-template">
+  \{{#faculties}}
+  <tr>
+    <td>\{{sn}}</td>
+    <td>\{{name}}</td>
+    <td>
+      <div class="d-flex justify-content-between justify-content-md-around">
+        <a href="#" class="btn btn-sm btn-success" data-toggle="modal" data-target="#edit-faculty-modal-\{{id}}">
+          <i class="fas fa-edit"></i>
+          edit
+        </a>
+        <a href="#" class="btn btn-sm btn-danger delete-faculty" data-id="\{{id}}">
+          <i class="fas fa-trash" data-id="\{{id}}"></i>
+          delete
+        </a>
+
+        <!-- edit faculty modal -->
+        <div class="modal fade" id="edit-faculty-modal-\{{id}}" data-backdrop="static">
+          <div class="modal-dialog">
+
+            <div class="modal-content">
+              <div class="modal-header text-center">
+                <h5 class=""><span class="badge badge-warning">Edit</span> <span
+                    class="badge bg-danger text-light">Faculty</span>
+                </h5>
+              </div>
+
+              <div class="modal-body">
+
+                <div class="card bg-gray">
+                  <div class="card-body">
+                    <form action="" method="post" class="update-faculty-form">
+                      <div class="form-group">
+                        <input type="text" name="name" class="form-control" placeholder="name of department" value="\{{name}}"
+                          autocomplete="off" />
+                      </div>
+                      
+                      <div class="form-group">
+                        <input type="hidden" name="id" value="\{{id}}" />
+                        <button type="submit" class="btn btn-success">
+                          update
+                          <i class="fas fa-save ml-3"></i>
+                        </button>
+                      </div>
+                    </form>
+                    <div class="text-center faculty-update-msg" id=""></div>
+                  </div>
+                </div>
+
+
+              </div>
+
+              <div class="modal-footer">
+                <a href="#" class="btn btn-sm btn-danger" data-dismiss="modal">cancel</a>
+              </div>
+            </div>
+           <!-- edit faculty modal -->
+
+      </div>
+    </td>
+  </tr>
+  \{{/faculties}}
+</script>
+
+<script type="mustache/template" id="faculties-department-template">
+  \{{#faculties}}
+  <option value="\{{id}}">\{{name}}</option>
+  \{{/faculties}}
+</script>
+
+<script type="mustache/template" id="departments-template">
+  \{{#departments}}
+  <tr>
+    <td>\{{sn}}.</td>
+    <td>\{{name}}</td>
+    <td>\{{Faculty.name}}</td>
+    <td>
+      <div class="d-flex justify-content-between justify-content-md-around">
+        <a href="#" class="btn btn-sm btn-success" data-toggle="modal" data-target="#edit-department-modal-\{{id}}">
+          <i class="fas fa-edit mr-1"></i>
+          edit
+        </a>
+        <a href="#" class="btn btn-sm btn-danger delete-department" data-id="\{{id}}">
+          <i class="fas fa-trash mr-1" data-id="\{{id}}"></i>
+          delete
+        </a>
+
+        <!-- edit department modal -->
+        <div class="modal fade" id="edit-department-modal-\{{id}}">
+          <div class="modal-dialog">
+
+            <div class="modal-content bg-gray">
+              <div class="modal-header text-center">
+                <h5 class=""><span class="badge badge-warning">Edit</span> <span
+                    class="badge bg-danger text-light">Department</span>
+                </h5>
+              </div>
+
+              <div class="modal-body">
+
+                <div class="card">
+                  <div class="card-body">
+                    <form action="" method="post" id="update-department-form" class="update-department-form">
+                      <div class="form-group">
+                        <input type="text" name="departmentName" class="form-control" placeholder="name of department" value="\{{name}}"
+                          autocomplete="off" />
+                        <span class="d-block error" id="departmentNameError"></span>
+                      </div>
+                      <div class="form-group">
+                        <select name="facultyId" class="form-control faculties-department-pane">
+                          <option value="">Select Faculty</option>
+                        </select>
+                        <span class="d-block error" id="facultyIdError"></span>
+                      </div>
+                      <div class="form-group">
+                        <input type="hidden" name="id" value="\{{id}}" />
+                        <button type="submit" class="btn btn-success">
+                          update
+                          <i class="fas fa-save ml-3"></i>
+                        </button>
+                      </div>
+                    </form>
+                    <div class="text-center department-update-msg" id=""></div>
+                  </div>
+                </div>
+
+
+              </div>
+
+              <div class="modal-footer">
+                <a href="#" class="btn btn-sm btn-danger" data-dismiss="modal">cancel</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+  \{{/departments}}
+</script>
+<!-- End of Templates -->

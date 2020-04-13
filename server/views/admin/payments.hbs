@@ -1,0 +1,99 @@
+<span id="admin-payments-page"></span>
+<div class="container-fluid">
+  <div class="row">
+    {{>_adminSidebar}}
+    <div class="col-12 col-lg-9">
+
+      <div class="row py-2 mx-auto">
+        <div class="col-12">
+          <form action="" method="get">
+            <div class="input-group">
+              <input type="search" name="searchQuery" class="form-control"
+                placeholder="search for fees by title, transaction id or matric no" />
+              <span class="input-group-prepend">
+                <button class="input-group-text bg-gray green font-weight-bold">
+                  SEARCH
+                  <i class="fas fa-search ml-1"></i>
+                </button>
+              </span>
+            </div>
+          </form>
+        </div>
+      </div>
+
+
+      <!-- paid fees -->
+      <div class="row py-3">
+        <div class="col-12 col-sm-12 mx-auto">
+          <div class="card">
+            <div class="card-header bg-orange">
+              <h4 class="card-title text-uppercase">Payments</h4>
+            </div>
+            <div class="card-body scrollable">
+
+              <table class="table table-striped" style="font-size: 0.7rem; text-transform: uppercase">
+                <thead class="green text-uppercase">
+                  <tr>
+                    <th>
+                      sn
+                    </th>
+                    <th>
+                      transaction id
+                    </th>
+                    <th>
+                      matric no
+                    </th>
+                    <th>
+                      title
+                    </th>
+                    <th>
+                      amount
+                      <span class="ml-1 orange">(NGN)</span>
+                    </th>
+                    <th>
+                      status
+                      <i class="fas fa-user-tag ml-3"></i>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody id="payments-pane"></tbody>
+              </table>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end of paid fees -->
+
+    </div>
+  </div>
+</div>
+
+<!-- Template -->
+<script type="mustache/template" id="payments-template">
+  \{{#payments}}
+  <tr>
+    <td>\{{sn}}</td>
+    <td>\{{reference}}</td>
+    <td>
+      <a style="text-decoration: none; color: orange;font-weight:bold;" data-toggle="tooltip" href="/admin/students/?searchQuery=\{{Student.matricNo}}" title="\{{Student.lastName}} \{{Student.firstName}}">
+        \{{Student.matricNo}}
+      </a>
+    </td>
+    <td>
+      \{{#FeeList}}
+        \{{Fee.title}}
+          \{{Level.name}}
+          \{{^Level.name}}
+            \{{LevelCategory.name}}
+          \{{/Level.name}}
+      \{{/FeeList}}
+    </td>
+    <td>\{{FeeList.amount}}</td>
+    <td>
+      approved
+    </td>
+  </tr>
+  \{{/payments}}
+</script>
+<!-- End of Template -->

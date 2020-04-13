@@ -1,0 +1,297 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+html {
+  text-rendering: optimizedLegibility;
+  font-size: 18px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+}
+
+body {
+  background: #eee;
+  font-family: 'Lato', sans-serif !important;
+  font-weight: 300 !important;
+}
+
+.flash-box {
+  min-width: 200px;
+  position: fixed;
+  z-index: 200;
+  padding: 10px;
+  border-radius: 5px;
+  top: 1.5%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.flash-box.error{
+  background-color: #e62424;
+  color: #fff!important;
+  font-size: 1rem;
+  box-shadow: 2px 4px 8px #df6b6b;
+}
+
+.flash-box.success{
+  background-color: #20a031;
+  color: #fff!important;
+  font-size: 1rem;
+  box-shadow: 2px 4px 8px #55804c;
+}
+
+.header {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.55)),
+    url(img/banner.jpg);
+  background-position: center;
+  background-size: cover;
+  height: 80vh;
+  width: 100%;
+  color: #ffffff;
+  position: relative;
+}
+
+.m-0 {
+  margin: 0px !important;
+}
+.p-0 {
+  padding: 0px !important;
+}
+
+.hero-text {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  text-align: right;
+}
+
+.ux-btn-ghost {
+  border: 2px solid #218c74;
+  color: #218c74 !important;
+}
+
+.ux-btn-full {
+  background: #ffb142;
+  color: #fff !important;
+  border: 2px solid #ffb142;
+}
+
+.ux-btn-ghost,
+.ux-btn-full {
+  border-radius: 20px;
+  padding: 5px 15px;
+  text-decoration: none;
+  color: #fff;
+  transition: all 0.4s;
+  box-shadow: 2px 5px 10px #888;
+}
+
+.ux-btn-ghost:hover,
+.ux-btn-full:hover {
+  transform: translateY(1px);
+  text-decoration: none;
+}
+
+.ux-btn-ghost:hover {
+  color: #000;
+}
+
+/*
+ navbar styling
+*/
+.line1,
+.line2,
+.line3 {
+  width: 30px;
+  height: 1px;
+  border: 1px solid #fff;
+  margin: 5px auto;
+  display: block;
+  transition: all 0.4s;
+}
+
+.change .line1 {
+  transform: rotate(45deg) translate(3px, 4px);
+}
+
+.change .line2 {
+  display: none;
+}
+
+.change .line3 {
+  transform: rotate(-45deg) translate(-1px, -3px);
+}
+.green {
+  color: #218c74 !important;
+}
+.bg-green {
+  background: #218c74 !important;
+}
+.orange {
+  color: #ffb142 !important;
+}
+.bg-orange {
+  background: #ffb142 !important;
+}
+.black {
+  color: #1e272e !important;
+}
+.bg-black {
+  background: #1e272e !important;
+}
+.gray {
+  color: #f7f1e3 !important;
+}
+
+.bg-gray {
+  background: #f7f1e3 !important;
+}
+
+#slider {
+  width: 100%;
+  height: auto;
+}
+
+#slider img {
+  width: 500px;
+  height: 300px;
+}
+
+.wrapper {
+  min-height: 60vh;
+  width: 100vw;
+}
+
+.error {
+  color: #e74c3c !important;
+  padding: 1px;
+  text-align: center;
+}
+
+.error-field {
+  border: 2px solid #e74c3c !important;
+}
+
+.loading {
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 1000;
+}
+
+.loading-inner {
+  position: absolute;
+  top: 45%;
+  text-align: center;
+  width: 100%;
+  color: red;
+}
+
+.sidebar {
+  min-height: 70vh;
+  background: #1e272e;
+  color: #fff;
+  position: absolute;
+  top: 0px;
+  z-index: 100;
+}
+.main-footer {
+  z-index: 1000 !important;
+}
+.main-nav {
+  z-index: 100;
+}
+
+.error {
+  color: red;
+  text-align: center;
+  font-size: 12px;
+}
+
+.hidden {
+  display: none;
+}
+.account-dropdown {
+  margin-left: -24% !important;
+}
+
+.account-dropdown a:hover {
+  background: #1e272e;
+}
+
+.clock-widget{
+  background: #1e272e;
+  padding: 5px;
+  width: 50%;
+  color: #eee;
+  margin: 0px auto;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: 1.2rem;
+}
+
+/*
+* Media Rules
+***************
+*/
+@media screen and (max-width: 575px) {
+  p,
+  span,
+  li,
+  a,
+  td,
+  div,
+  caption {
+    font-size: 0.75rem !important;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-size: 0.9rem !important;
+  }
+
+  .scrollable table {
+    width: 1000px;
+  }
+  .account-dropdown {
+    margin: 0 auto !important;
+  }
+  .scrollable-sm {
+    overflow: scroll;
+  }
+  .scrollable-sm table {
+    width: 250px;
+  }
+  .fee-list-card {
+    width: 300px;
+  }
+  .sidebar {
+    position: static;
+    height: fit-content;
+  }
+  #slider img{
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 765px) {
+  .sidebar {
+    position: static;
+    height: fit-content;
+  }
+
+  .scrollable {
+    overflow: scroll;
+  }
+
+  .account-dropdown {
+    margin: 0 auto !important;
+  }
+}

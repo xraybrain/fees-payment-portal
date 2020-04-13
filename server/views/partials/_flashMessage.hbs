@@ -1,0 +1,16 @@
+{{#if success}}
+<div class="flash-box success text-center">
+  <p>
+    {{success}}
+  </p>
+</div>
+{{/if}}
+
+{{#if error}}
+<div class="flash-box error text-center" id="flash-box">
+  <a href="#" class="close text-white" id="close-flash-box">&times;</a>
+  <p>
+    {{error}}
+  </p>
+</div>
+{{/if}}

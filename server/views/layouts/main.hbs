@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link type="text/css" rel="stylesheet" href="/src/css/main.css" />
+
+  <link type="text/css" rel="stylesheet" href="/vendors/bootstrap-4.4.1-dist/css/bootstrap.css" />
+  <link type="text/css" rel="stylesheet" href="/vendors/css/aos.css" />
+
+  <link type="text/css" rel="stylesheet" href="/vendors/css/placeholder-loading.css" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  {{!-- <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script> --}}
+  <script src="/vendors/js/jquery-3.4.1.js"></script>
+  <title>{{pageTitle}}</title>
+</head>
+
+<body class="bg-light" id="body">
+  {{>_flashMessage}}
+  {{>_mainNav}}
+  {{{body}}}
+
+  {{>_mainFooter}}
+
+  <div class="modal fade" id="dialog-box">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="dialog-title"></h5>
+        </div>
+        <div class="modal-body">
+          <div class="d-flex justify-content-between align-items-center">
+            <i id="dialog-icon"></i>
+            <p id="dialog-message" class="ml-3 text-center"></p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div>
+            <button type="button" role="button" id="dialog-ok-btn" class="btn btn-sm btn-success mr-1">
+              ok
+            </button>
+            <button type="button" role="button" id="dialog-cancel-btn" class="btn btn-sm btn-danger">
+              cancel
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {{!-- <script src="/vendors/js/jquery-3.4.1.js"></script> --}}
+  <script src="/vendors/js/popper.min.js"></script>
+  <script src="/vendors/js/jquery.form.js"></script>
+  <script src="/vendors/bootstrap-4.4.1-dist/js/bootstrap.js"></script>
+  <script src="/vendors/js/all.js"></script>
+  <script src="/vendors/js/mustache.min.js"></script>
+  <script src="/vendors/js/aos.js"></script>
+  <script src="/src/js/main.js"></script>
+
+  <!-- Templates-->
+  <script type="mustache/template" id="loading-template">
+    <div class="loading">
+      <div class="loading-inner">
+        <i class="fas fa-spinner fa-pulse fa-5x"></i>
+      </div>
+    </div>
+  </script>
+
+  <!-- End of Templates -->
+
+</body>
+
+</html>

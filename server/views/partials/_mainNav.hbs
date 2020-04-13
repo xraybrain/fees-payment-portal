@@ -1,0 +1,106 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-black main-nav">
+  <a class="navbar-brand" href="/">
+    <div class="d-flex justify-content-around">
+      <img src="/src/img/logo.png" alt="logo" style="width: 80px; height: 55px" />
+      <div style="position: relative;">
+        <h4 class="text-uppercase">Payment</h4>
+        <h6 style="position: absolute; right: 0px; top: 22px; font-style: italic;">portal</h6>
+      </div>
+    </div>
+  </a>
+  <button class="navbar-toggler" data-toggle="collapse" data-target="#top-menu">
+    <span class="line1"></span>
+    <span class="line2"></span>
+    <span class="line3"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="top-menu">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a href="/" class="nav-link text-light text-uppercase font-weight-bold">
+          <i class="fas fa-home orange mr-1"></i>
+          home
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="/" class="nav-link text-light text-uppercase font-weight-bold">
+          <i class="fas fa-comment orange mr-1"></i>
+          contact us
+        </a>
+      </li>
+      {{^user}}
+      <li class="nav-item">
+        <a href="/signup/" class="nav-link text-light text-uppercase font-weight-bold">
+          <i class="fas fa-user-plus orange mr-1"></i>
+          sign up
+        </a>
+      </li>
+      {{/user}}
+
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle text-light text-uppercase font-weight-bold" data-toggle="dropdown">
+          <i class="fas fa-user orange mr-1"></i>
+          account
+        </a>
+
+        <!-- dropdown menu -->
+        <div class="dropdown-menu bg-dark text-light account-dropdown">
+          {{#if user}}
+          {{#if (isEqual user.role 'Student')}}
+          <a href="/student/profile/" class="dropdown-item text-center text-white">
+            <i class="fas fa-user d-block mx-auto fa-2x orange"></i>
+            My Profile
+          </a>
+          <a href="/student/"
+            class="dropdown-item d-flex align-items-center text-white text-uppercase justify-content-between">
+            <i class="fas fa-th mr-1 orange"></i>
+            <span>
+              dashboard
+            </span>
+          </a>
+          <a href="/signout/"
+            class="dropdown-item d-flex align-items-center text-white text-uppercase justify-content-between text-warning font-weight-bold mt-2">
+            signout
+            <i class="fas fa-sign-out-alt"></i>
+          </a>
+          {{/if}}
+          {{#if (isEqual user.role 'Admin')}}
+          <a href="/admin/profile/" class="dropdown-item text-center text-white">
+            <i class="fas fa-user d-block mx-auto fa-2x orange"></i>
+            My Profile
+          </a>
+          <a href="/admin/"
+            class="dropdown-item d-flex align-items-center text-white text-uppercase justify-content-between">
+            <i class="fas fa-th mr-1 orange"></i>
+            <span>
+              dashboard
+            </span>
+          </a>
+          <a href="/admin/signout/"
+            class="dropdown-item d-flex align-items-center text-white text-uppercase justify-content-between text-warning font-weight-bold mt-2">
+            signout
+            <i class="fas fa-sign-out-alt"></i>
+          </a>
+          {{/if}}
+          {{else}}
+          <a href="/signin/" class="dropdown-item d-flex align-items-center text-white text-uppercase">
+
+            <span>
+              student signin
+            </span>
+          </a>
+
+          <a href="/admin/signin/" class="dropdown-item d-flex align-items-center text-white text-uppercase">
+
+            <span>
+              admin signin
+            </span>
+          </a>
+          {{/if}}
+        </div>
+        <!-- end of dropdown menu -->
+      </li>
+
+    </ul>
+  </div>
+</nav>

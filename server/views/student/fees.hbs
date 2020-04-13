@@ -1,0 +1,240 @@
+<span id="student-fee-page"></span>
+<div class="container-fluid">
+  <div class="row">
+    {{>_studentSidebar}}
+    <div class="col-12 col-md-9 ml-auto">
+
+      <div class="row py-2 mx-auto">
+        <div class="col-12">
+          <form action="" method="get">
+            <div class="input-group">
+              <input type="search" name="searchQuery" class="form-control" placeholder="search for fees by title" />
+              <span class="input-group-prepend">
+                <button class="input-group-text bg-gray green font-weight-bold">
+                  SEARCH
+                  <i class="fas fa-search ml-1"></i>
+                </button>
+              </span>
+            </div>
+          </form>
+        </div>
+      </div>
+
+
+      <!-- paid fees -->
+      <div class="row py-3">
+        <div class="col-12 col-sm-12 mx-auto">
+          <div class="card">
+            <div class="card-header bg-orange">
+              <h4 class="card-title text-light font-weight-bold text-uppercase">Fees Payment Dashboard</h4>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-11 col-md-6 mx-auto mb-1">
+                  <div class="card" style="height: 450px;">
+                    <div class="card-header bg-black text-light">
+                      <h5 class="card-title">Fees</h5>
+                    </div>
+                    <div class="card-body scrollable-sm" style="height: 330px; max-height: 450px; overflow-y: scroll">
+                      <div id="fees-pane">
+                        
+                        <div class="ph-item">
+                            <div class="ph-col-12">
+                              <div class="ph-row">
+                                <div class="ph-col-4 big"></div>
+                                <div class="ph-col-4 big empty"></div>
+                                <div class="ph-col-4 big"></div>
+                              </div>
+
+                              <div class="ph-row">
+                                <div class="ph-col-4 big"></div>
+                                <div class="ph-col-4 big empty"></div>
+                                <div class="ph-col-4 big"></div>
+                              </div>
+
+                              <div class="ph-row">
+                                <div class="ph-col-4 big"></div>
+                                <div class="ph-col-4 big empty"></div>
+                                <div class="ph-col-4 big"></div>
+                              </div>
+
+                              <div class="ph-row">
+                                <div class="ph-col-4 big"></div>
+                                <div class="ph-col-4 big empty"></div>
+                                <div class="ph-col-4 big"></div>
+                              </div>
+
+                              <div class="ph-row">
+                                <div class="ph-col-4 big"></div>
+                                <div class="ph-col-4 big empty"></div>
+                                <div class="ph-col-4 big"></div>
+                              </div>
+
+                              <div class="ph-row">
+                                <div class="ph-col-4 big"></div>
+                                <div class="ph-col-4 big empty"></div>
+                                <div class="ph-col-4 big"></div>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-11 col-md-6 mx-auto mb-1">
+                  <div class="card" style="height: 450px;">
+                    <div class="card-header bg-green text-light">
+                      <h5 class="card-title">Fee Listing</h5>
+                    </div>
+                    <div class="card-body scrollable-sm" style="height: 330px; max-height: 450px; overflow-y: scroll">
+                      <div class="row" id="fee-lists-pane">
+                        <div class="col-12 mt-5 text-center text-muted">
+                          <i class="fas fa-info-circle fa-3x d-block mx-auto mb-3"></i>
+                          select a fee to view the list
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end of paid fees -->
+
+    </div>
+  </div>
+</div>
+
+<!-- Template -->
+<script type="mustache/template" id="fees-table-template">
+<table class="table table-striped">
+  <thead class="green">
+    <tr class="text-uppercase">
+      <th>title</th>
+      <th class="text-center">
+        action
+        <i class="fas fa-cog ml-3"></i>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    \{{#fees}}
+    <tr>
+      <td>
+        \{{title}}
+      </td>
+      <td class="text-right">
+      <button href="#" class="btn btn-info btn-sm ml-auto view-fee-list-btn" data-fee-id="\{{id}}">
+        view
+        <i class="fas fa-info-circle"></i>
+      </button>
+      </td>
+    </tr>
+    \{{/fees}}
+  </tbody>
+</table>
+</script>
+
+<script type="mustache/template" id="fee-lists-loading-template">
+  <div class="col-12 ph-item">
+    <div class="ph-col-12">
+      <div class="ph-row">
+        <div class="ph-col-4 big"></div>
+        <div class="ph-col-4 big empty"></div>
+        <div class="ph-col-4 big"></div>
+      </div>
+      <div class="ph-row">
+        <div class="ph-col-4 big"></div>
+        <div class="ph-col-4 big empty"></div>
+        <div class="ph-col-4 big"></div>
+      </div>
+      <div class="ph-row">
+        <div class="ph-col-4 big"></div>
+        <div class="ph-col-4 big empty"></div>
+        <div class="ph-col-4 big"></div>
+      </div>
+      <div class="ph-row">
+        <div class="ph-col-4 big"></div>
+        <div class="ph-col-4 big empty"></div>
+        <div class="ph-col-4 big"></div>
+      </div>
+      <div class="ph-row">
+        <div class="ph-col-4 big"></div>
+        <div class="ph-col-4 big empty"></div>
+        <div class="ph-col-4 big"></div>
+      </div>
+
+      <div class="ph-row">
+        <div class="ph-col-4 big empty"></div>
+        <div class="ph-col-4 big"></div>
+        <div class="ph-col-4 big empty"></div>
+      </div>
+    </div>
+  </div>
+</script>
+
+<script type="mustache/template" id="fee-lists-template">
+  \{{#feeLists}}
+  <div class="col-11 col-sm-12 mx-auto">
+    <div class="card mb-3 fee-list-card">
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="py-1">Fee Title</td>
+            <td class="py-1">\{{Fee.title}}</td>
+          </tr>
+          <tr>
+            <td class="py-1">Category</td>
+            <td class="py-1">\{{LevelCategory.name}}</td>
+          </tr>
+          <tr>
+            <td class="py-1">Level</td>
+            <td class="py-1">\{{Level.name}} \{{^Level}}general\{{/Level}}</td>
+          </tr>
+          <tr>
+            <td class="py-1">Amount <span class="font-weight-bold">(&#8358;)</span></td>
+            <td class="py-1">\{{amount}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="text-center">
+        \{{^Payment}}
+        <form action="/student/makepayment/" method="POST">
+          <input type="hidden" name="id" value="\{{id}}" />
+          <button type="submit" class="btn btn-success">
+            make payment
+          </button>
+        </form>
+        \{{/Payment}}
+        \{{#Payment}}
+        <div>
+          <form action="/student/receipt/\{{id}}" method="get">
+            <button type="submit" class="btn btn-warning font-weight-bold text-uppercase">
+              receipt
+              <i class="fas fa-info-circle"></i>
+            </button>
+          </form>
+        </div>
+        \{{/Payment}}
+      </div>
+    </div>
+  </div>
+  </div>
+  \{{/feeLists}}
+</script>
+<!-- End of Template-->

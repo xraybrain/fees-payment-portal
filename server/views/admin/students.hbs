@@ -1,0 +1,95 @@
+<span id="admin-students-page" data-action="{{action}}"></span>
+<div class="container-fluid">
+  <div class="row">
+    {{>_adminSidebar}}
+    <div class="col-12 col-lg-9">
+
+
+      <div class="row py-2 mx-auto">
+        <div class="col-12">
+          <form action="" method="get">
+            <div class="input-group">
+              <input type="search" name="searchQuery" class="form-control"
+                placeholder="search for student by (firstname, lastname, middlename or matric no)" />
+              <span class="input-group-prepend">
+                <button class="input-group-text bg-gray green font-weight-bold">
+                  SEARCH
+                  <i class="fas fa-search ml-1"></i>
+                </button>
+              </span>
+            </div>
+          </form>
+        </div>
+      </div>
+
+
+      <!-- registered students -->
+      <div class="row py-3">
+        <div class="col-12 col-sm-12 mx-auto">
+          <div class="card">
+            <div class="card-header bg-orange">
+              <h4 class="card-title">Students</h4>
+            </div>
+            <div class="card-body scrollable">
+
+              <table class="table table-striped" style="font-size: 0.7rem;">
+                <thead class="green text-uppercase" style="font-size: 0.56rem; font-size: 700">
+                  <tr>
+                    <th>
+                      sn
+                    </th>
+                    <th>
+                      matric no
+                    </th>
+                    <th>
+                      last name
+                    </th>
+                    <th>
+                      first name
+                    </th>
+                    <th>
+                      middle name
+                    </th>
+                    <th>
+                      department
+                    </th>
+                    <th>
+                      level
+                    </th>
+                    <th>
+                      status
+                      {{!-- <i class="fas fa-user-tag ml-3"></i> --}}
+                    </th>
+                  </tr>
+                </thead>
+                <tbody id="students-pane" class="text-uppercase"></tbody>
+              </table>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end of registered students -->
+
+    </div>
+  </div>
+</div>
+
+<!-- Template -->
+<script type="mustache/temaplate" id="students-template">
+  \{{#students}}
+  <tr>
+    <td>\{{sn}}</td>
+    <td>\{{matricNo}}</td>
+    <td>\{{lastName}}</td>
+    <td>\{{firstName}}</td>
+    <td>\{{middleName}}</td>
+    <td class="text-center">\{{Department.name}}</td>
+    <td>\{{LevelCategory.name}}</td>
+    <td>
+      active
+    </td>
+  </tr>
+  \{{/students}}
+</script>
+<!-- End of Template -->

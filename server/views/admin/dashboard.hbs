@@ -1,0 +1,185 @@
+<span id="admin-dashboard"></span>
+<div class="container-fluid">
+  <div class="row">
+    {{>_adminSidebar}}
+    <div class="col-12 col-lg-9">
+      <!-- Fees payment summary -->
+      <div class="row">
+
+        <div class="col-10 col-sm-6 col-lg-4 mx-auto my-1">
+          <div class="card bg-gray">
+            <div class="card-body">
+              <span class="d-flex justify-content-center align-items-center text-uppercase font-weight-bold">
+                <i class="fas fa-money-check fa-2x mr-2 orange"></i>
+                Payments
+              </span>
+              <span class="d-flex justify-content-between align-items-center text-uppercase font-weight-bold">
+                <span>&#8358;</span>
+                <span class="text-right d-block mt-1" id="total-payments">0</span>
+              </span>
+            </div>
+            <div class="card-footer text-right">
+              <a href="" class="ux-btn-ghost">
+                refresh
+                <i class="fas fa-sync-alt"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-10 col-sm-6 col-lg-4 mx-auto my-1">
+          <div class="card bg-gray">
+            <div class="card-body">
+              <span class="d-flex justify-content-center align-items-center text-uppercase font-weight-bold">
+                <i class="fas fa-list fa-2x mr-2 orange"></i>
+                fees
+              </span>
+              <span class="d-flex justify-content-between align-items-center text-uppercase font-weight-bold">
+                <span>&#8358;</span>
+                <span class="text-right d-block mt-1" id="total-fees">0</span>
+              </span>
+            </div>
+            <div class="card-footer text-right">
+              <a href="" class="ux-btn-ghost">
+                refresh
+                <i class="fas fa-sync-alt"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-10 col-sm-6 col-lg-4 mx-auto my-1">
+          <div class="card bg-gray">
+            <div class="card-body">
+              <span class="d-flex justify-content-center align-items-center text-center text-uppercase font-weight-bold">
+                <i class="fas fa-users orange fa-2x mr-2"></i>
+                <span>students</span>
+              </span>
+              <span class="d-block text-center text-uppercase font-weight-bold">
+                <span class="text-right d-block text-center mt-1" id="total-students">0</span>
+              </span>
+            </div>
+            <div class="card-footer text-right">
+              <a href="" class="ux-btn-ghost">
+                refresh
+                <i class="fas fa-sync-alt"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+      <!-- End of Fees payment summary -->
+
+      <!-- new students-->
+      <div class="row py-3">
+        <div class="col-11 col-sm-12 mx-auto">
+          <div class="card">
+            <div class="card-header bg-orange">
+              <h4 class="card-title">New Students</h4>
+            </div>
+            <div class="card-body scrollable" style="max-height: 350px; overflow-y: scroll;">
+
+              <table class="table table-striped text-uppercase" style="font-size: 0.65rem;">
+                <thead class="green">
+                  <tr>
+                    <th>sn</th>
+                    <th>matric no</th>
+                    <th>
+                      lastname
+                    </th>
+                    <th>firstname</th>
+                    <th>middle name</th>
+                    <th>department</th>
+                    <th>
+                      action
+                      <i class="fas fa-cog ml-3"></i>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody id="new-students-pane"></tbody>
+              </table>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end of new students -->
+
+      <!-- unpaid fees -->
+      <div class="row py-3">
+        <div class="col-11 col-sm-12 mx-auto">
+          <div class="card">
+            <div class="card-header bg-orange">
+              <h4 class="card-title">New Payments</h4>
+            </div>
+            <div class="card-body scrollable" style="max-height: 350px; overflow-y: scroll;">
+
+              <table class="table table-striped" style="font-size: 0.8rem;">
+                <thead class="green">
+                  <tr>
+                    <th>sn</th>
+                    <th>transaction id</th>
+                    <th>title</th>
+                    <th>
+                      amount
+                      <span class="ml-1 orange">(NGN)</span>
+                    </th>
+                    <th>date</th>
+                    <th>
+                      action
+                      <i class="fas fa-cog ml-3"></i>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody id="new-payments-pane"></tbody>
+              </table>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end of unpaid fees -->
+    </div>
+
+  </div>
+</div>
+
+<!-- Templates -->
+<script type="mustache/template" id="new-payments-template">
+\{{#payments}}
+  <tr>
+    <td>\{{sn}}.</td>
+    <td>\{{reference}}</td>
+    \{{#FeeList}}
+    <td>\{{Fee.title}}</td>
+    <td>\{{amount}}</td>
+    \{{/FeeList}}
+    <td>\{{createdAt}}</td>
+    <td>
+      <button class="btn btn-success btn-sm confirm-payment-btn" data-id="\{{id}}">confirm</button>
+    </td>
+  </tr>
+\{{/payments}}
+</script>
+<script type="mustache/template" id="new-students-template">
+\{{#students}}
+  <tr>
+    <td>\{{sn}}.</td>
+    <td>\{{matricNo}}</td>
+    <td>\{{lastName}}</td>
+    <td>\{{firstName}}</td>
+    <td>\{{middleName}}</td>
+    <td>\{{Department.name}} (\{{LevelCategory.name}})</td>
+    <td>
+      <button class="btn btn-success approve-student-btn" data-id="\{{id}}">
+        approve
+      </button>
+    </td>
+  </tr>
+\{{/students}}
+</script>
+<!-- End of templates -->

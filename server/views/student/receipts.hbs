@@ -1,0 +1,145 @@
+<span id="student-receipts-page"></span>
+<div class="container-fluid">
+  <div class="row">
+    {{>_studentSidebar}}
+    <div class="col-12 col-md-9 ml-auto">
+
+      <div class="row py-2 mx-auto">
+        <div class="col-11 col-sm-12 mx-auto">
+          <form action="" method="get">
+            <div class="input-group">
+              <input type="search" name="searchQuery" class="form-control"
+                placeholder="search for receipt by fees title or receipt no" />
+              <span class="input-group-prepend">
+                <button class="input-group-text bg-gray green font-weight-bold">
+                  SEARCH
+                  <i class="fas fa-search ml-1"></i>
+                </button>
+              </span>
+            </div>
+          </form>
+        </div>
+      </div>
+
+
+      <!-- paid fees -->
+      <div class="row py-3">
+        <div class="col-12 col-sm-12 mx-auto">
+          <div class="card">
+            <div class="card-header bg-orange">
+              <h4 class="card-title">Paid Fees Receipts</h4>
+            </div>
+            <div class="card-body scrollable" id="receipts-pane" style="height: 75vh; overflow-y: scroll">
+
+              <div class="ph-item">
+                <div class="ph-col-12">
+                  <div class="ph-row d-flex justify-content-around">
+                    <div class="ph-col-2 big"></div>
+                    <div class="ph-col-2 big"></div>
+                    <div class="ph-col-2 big"></div>
+                    <div class="ph-col-2 big"></div>
+                    <div class="ph-col-2 big"></div>
+                  </div>
+
+                  <div class="ph-row d-flex justify-content-around">
+                    <div class="ph-col-2 big"></div>
+                    <div class="ph-col-2 big"></div>
+                    <div class="ph-col-2 big"></div>
+                    <div class="ph-col-2 big"></div>
+                    <div class="ph-col-2 big"></div>
+                  </div>
+
+                  <div class="ph-row d-flex justify-content-around">
+                    <div class="ph-col-2 big"></div>
+                    <div class="ph-col-2 big"></div>
+                    <div class="ph-col-2 big"></div>
+                    <div class="ph-col-2 big"></div>
+                    <div class="ph-col-2 big"></div>
+                  </div>
+
+                  <div class="ph-row d-flex justify-content-around">
+                    <div class="ph-col-2 big"></div>
+                    <div class="ph-col-2 big"></div>
+                    <div class="ph-col-2 big"></div>
+                    <div class="ph-col-2 big"></div>
+                    <div class="ph-col-2 big"></div>
+                  </div>
+
+                  <div class="ph-row d-flex justify-content-around">
+                    <div class="ph-col-2 big"></div>
+                    <div class="ph-col-2 big"></div>
+                    <div class="ph-col-2 big"></div>
+                    <div class="ph-col-2 big"></div>
+                    <div class="ph-col-2 big"></div>
+                  </div>
+
+                  <div class="ph-row d-flex justify-content-around">
+                    <div class="ph-col-2 big"></div>
+                    <div class="ph-col-2 big"></div>
+                    <div class="ph-col-2 big"></div>
+                    <div class="ph-col-2 big"></div>
+                    <div class="ph-col-2 big"></div>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end of paid fees -->
+
+    </div>
+  </div>
+</div>
+
+<!-- Template -->
+<script type="mustache/template" id="receipts-template">
+<table class="table table-striped">
+  <thead class="green">
+    <tr>
+      <th>sn</th>
+      <th>title</th>
+      <th>
+        amount
+        <span class="orange">(&#8358;)</span>
+      </th>
+      <th>
+        payment no
+      </th>
+      <th>date</th>
+      <th>
+        action
+        <i class="fas fa-cog ml-3"></i>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+  \{{#payments}}
+  <tr>
+    <td>\{{sn}}.</td>
+    \{{#FeeList}}
+    <td>\{{Fee.title}}</td>
+    <td>\{{amount}}</td>
+    \{{/FeeList}}
+    <td>
+      \{{reference}}
+    </td>
+    <td>
+      \{{createdAt}}
+    </td>
+    <td>
+      <form action="/student/receipt/\{{id}}" method="get">
+        <button type="submit" class="btn btn-info">
+          view
+          <i class="fas fa-info-circle"></i>
+        </button>
+      </form>
+    </td>
+  </tr>
+  \{{/payments}}
+  </tbody>
+</table>
+</script>
+<!-- End of Template -->

@@ -1,0 +1,251 @@
+<span id="student-profile-page"></span>
+<div class="container-fluid">
+  <div class="row">
+    {{>_studentSidebar}}
+    <div class="col-12 col-md-9 ml-auto">
+
+      <div class="row">
+        <div class="col-12 p-5 bg-black text-light d-flex justify-content-between align-items-center">
+          <i class="fas fa-user-tag fa-3x text-warning"></i>
+          <h5>My Profile</h5>
+        </div>
+
+        <div class="col-12 col-md-12">
+          <div class="row align-items-center mt-3">
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                  <div class="text-center">
+                    <p><i class="fas fa-user fa-5x text-danger mb-1"></i></p>
+                    <div class="text-capitalize mb-3" id="full-name">
+
+                      <div class="ph-row">
+                        <div class="ph-col-2 empty"></div>
+                        <div class="ph-col-8"></div>
+                        <div class="ph-col-2 empty"></div>
+                      </div>
+
+                    </div>
+                    <div class="text-uppercase mb-2" id="matric-no">
+                      <div class="ph-row">
+                        <div class="ph-col-4 empty"></div>
+                        <div class="ph-col-4"></div>
+                        <div class="ph-col-4 empty"></div>
+                      </div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                      <a href="#" class="btn btn-sm btn-success" data-toggle="modal" data-target="#edit-profile">
+                        edit profile
+                        <i class="fas fa-edit"></i>
+                      </a>
+                      <a href="#" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#change-password">
+                        change password
+                        <i class="fas fa-undo"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="card" class="w-100">
+                <div class="card-body" id="student-data-pane">
+                  <div class="ph-item">
+                    <div class="ph-col-12">
+                      <div class="ph-row">
+                        <div class="ph-col-10"></div>
+                        <div class="ph-col-2 empty"></div>
+                        <div class="ph-col-2 empty"></div>
+                        <div class="ph-col-6"></div>
+                        <div class="ph-col-4 empty"></div>
+
+                        <div class="ph-col-12 empty"></div>
+
+                        <div class="ph-col-10"></div>
+                        <div class="ph-col-2 empty"></div>
+                        <div class="ph-col-2 empty"></div>
+                        <div class="ph-col-6"></div>
+                        <div class="ph-col-4 empty"></div>
+
+                        <div class="ph-col-12 empty"></div>
+                        <div class="ph-col-12 empty"></div>
+
+                        <div class="ph-col-10"></div>
+                        <div class="ph-col-2 empty"></div>
+                        <div class="ph-col-2 empty"></div>
+                        <div class="ph-col-6"></div>
+                        <div class="ph-col-4 empty"></div>
+
+                        <div class="ph-col-12 empty"></div>
+                        <div class="ph-col-12 empty"></div>
+
+                        <div class="ph-col-10"></div>
+                        <div class="ph-col-2 empty"></div>
+                        <div class="ph-col-2 empty"></div>
+                        <div class="ph-col-6"></div>
+                        <div class="ph-col-4 empty"></div>
+
+                        <div class="ph-col-12 empty"></div>
+                        <div class="ph-col-12 empty"></div>
+
+                        <div class="ph-col-10"></div>
+                        <div class="ph-col-2 empty"></div>
+                        <div class="ph-col-2 empty"></div>
+                        <div class="ph-col-6"></div>
+                        <div class="ph-col-4 empty"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Profile Modal -->
+<div class="modal fade" id="edit-profile" data-backdrop="static">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title d-flex align-items-center">
+          <i class="fas fa-edit fa-2x text-warning"></i>
+          <div class="text-center">
+            <span>Edit Profile</span>
+          </div>
+        </h5>
+
+        <a href="#" class="close" data-dismiss="modal">&times;</a>
+      </div>
+      <div class="modal-body" id="edit-profile-pane">
+        <div class="ph-item">
+          <div class="ph-col-12">
+            <div class="ph-row">
+              <div class="ph-col-10 big"></div>
+              <div class="ph-col-2 big"></div>
+
+              <div class="ph-col-10 big"></div>
+              <div class="ph-col-2 big"></div>
+
+              <div class="ph-col-10 big"></div>
+              <div class="ph-col-2 big"></div>
+
+              <div class="ph-col-10 big"></div>
+              <div class="ph-col-2 big"></div>
+
+              <div class="ph-col-10 big"></div>
+              <div class="ph-col-2 big"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End of edit Profile Modal -->
+
+<!-- change password Modal -->
+<div class="modal fade" id="change-password" data-backdrop="static">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title d-flex align-items-center">
+          <i class="fas fa-undo-alt fa-2x text-warning mr-2"></i>
+          <div class="text-center">
+            <span>Change Password</span>
+          </div>
+        </h5>
+
+        <a href="#" class="close" data-dismiss="modal">&times;</a>
+      </div>
+      <div class="modal-body">
+        <div class="alert hidden" id="change-password-msg"></div>
+        <form action="" method="POST" id="change-password-form">
+          <div class="form-group">
+            <input type="password" name="password" class="form-control" placeholder="New Password" id='password'>
+            <span class="error d-block" id="passwordError"></span>
+          </div>
+          <div class="form-group">
+            <input name="confirmPassword" type="password" class="form-control" placeholder="Confirm New Password" id="confirmPassword">
+            <span class="error d-block" id="confirmPasswordError"></span>
+          </div>
+          <div class="form-group text-center">
+            <button class="btn btn-warning">
+              change
+              <i class="fas fa-save mr-1"></i>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End of reset password Modal -->
+
+
+<!-- Templates -->
+<script type="mustache/template" id="student-data-template">
+  \{{#student}}
+  <div class="mb-2 py-2">
+    <h5 class="text-uppercase">Full Name</h5>
+    <p class="ml-2 text-capitalize">\{{lastName}} \{{firstName}} \{{middleName}}</p>
+  </div>
+
+  <div class="mb-2 pb-2">
+    <h5 class="text-uppercase">Matric No</h5>
+    <p class="ml-2 text-uppercase">\{{matricNo}}</p>
+  </div>
+
+  <div class="mb-2 pb-2">
+    <h5 class="text-uppercase">Department</h5>
+    <p class="ml-2 text-capitalize">\{{Department.name}}</p>
+  </div>
+
+  <div class="mb-2">
+    <h5 class="text-uppercase">Level</h5>
+    <p class="ml-2">\{{LevelCategory.name}}</p>
+  </div>
+  \{{/student}}
+</script>
+
+<script type="mustache/template" id="edit-profile-template">
+  <div id="edit-msg" class="alert alert-success hidden"></div>
+  \{{#student}}
+  <form action="" method="POST" id="edit-student-form">
+    <div class="form-group">
+      <input type="text" name="lastName" value="\{{lastName}}" class="form-control" placeholder="Last Name">
+      <span class="d-block error" id="lastNameError"></span>
+    </div>
+    <div class="form-group">
+      <input type="text" name="firstName" value="\{{firstName}}" class="form-control"
+        placeholder="First Name">
+        <span class="d-block error" id="firstNameError"></span>
+    </div>
+    <div class="form-group">
+      <input type="text" name="middleName" value="\{{middleName}}" class="form-control"
+        placeholder="Middle Name">
+        <span class="d-block error" id="middleNameError"></span>
+    </div>
+    <div class="form-group">
+      <input type="text" name="matricNo" value="\{{matricNo}}" class="form-control" placeholder="Matric No"
+        readonly="true">
+        <span class="d-block error" id="matricNoError"></span>
+    </div>
+    <div class="form-group">
+      <input type="text" name="department" value="\{{Department.name}}" class="form-control"
+        placeholder="Department" readonly="true">
+    </div>
+    <div class="form-group text-center">
+      <input type="hidden" name="id" value="\{{id}}">
+      <button class="btn btn-success">
+        update profile
+      </button>
+    </div>
+  </form>
+  \{{/student}}
+</script>
+<!-- End of Templates -->

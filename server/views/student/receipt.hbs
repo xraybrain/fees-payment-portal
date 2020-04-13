@@ -1,0 +1,98 @@
+<span id="receipt-page" data-id="{{paymentId}}"></span>
+<div class="container-fluid mt-1 bg-light">
+  <div class="row">
+    <div class="col-10 mx-auto">
+      <div class="text-right">
+        <button class="btn btn-warning" id="print-btn">
+          <i class="fas fa-print"></i>
+        </button>
+      </div>
+
+      <div id="printable">
+        <div id="receipt-pane">
+          <div style="text-align: center; display:flex; justify-content: center; align-items: center;">
+            <img src="/src/img/logo.png" alt="School Logo" style="width: 130px; height: 100px; margin-right: 5px">
+            <span>
+              <h3 style="text-transform:uppercase; margin-bottom: 1px">Imo State Polytechnic</h3>
+              <h6>Payment Receipt</h6>
+            </span>
+          </div>
+          <hr class="socket">
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Template -->
+<script type="mustache/template" id="receipt-template">
+\{{#payments}}
+<div class="py-3">
+  \{{#Student}}
+  <h4 style="text-align:center; text-transform: uppercase">
+    \{{lastName}} \{{firstName}} \{{middleName}}
+  </h4>
+  
+
+  <table>
+    <tr>
+      <th style="padding: 8px;">Department</th>
+      <td style="padding: 8px;text-transform:uppercase">\{{Department.name}}</td>
+    </tr>
+    <tr>
+      <th style="padding: 8px;">Matric No</th>
+      <td style="padding: 8px;text-transform: uppercase;">\{{matricNo}}</td>
+    </tr>
+    <tr>
+      <th style="padding: 8px;">Email Address</th>
+      <td style="padding: 8px;">\{{emailAddress}}</td>
+    </tr>
+  </table>
+
+  \{{/Student}}
+
+  \{{#FeeList}}
+  <div class="py-3 scrollable" style="text-align: center;">
+    <h5 style="text-transform: uppercase">invoice: \{{Fee.title}} (
+      \{{Level.name}}
+      \{{^Level}}
+        \{{LevelCategory.name}}
+      \{{/Level}})
+    </h5>
+    <table style="width: 100%;">
+      <thead>
+        <tr>
+          <th style="padding: 8px;">Transaction Id</th>
+          <th style="padding: 8px;">Fee Title</th>
+          <th style="padding: 8px;">Payment Date</th>
+          <th style="padding: 8px;">Amount Paid (NGN)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding: 8px; text-transform: uppercase">
+            \{{reference}}
+          </td>
+          <td style="padding: 8px; text-transform: uppercase">
+            \{{Fee.title}}
+          </td>
+          <td style="padding: 8px; text-transform: uppercase">
+            \{{createdAt}}
+          </td>
+          <td style="padding: 8px; text-transform: uppercase">
+            \{{amount}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  \{{/FeeList}}
+</div>
+\{{/payments}}
+<div style="text-align:center;">
+  <img src="/src/img/stamp.png" alt="paid stamp" width="100" height="100"/>
+</div>
+</script>
+<!-- End of Template -->

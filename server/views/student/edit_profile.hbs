@@ -1,0 +1,93 @@
+<div class="container-fluid">
+  {{>_studentSidebar}}
+  <div class="col-12 col-md-9 col-lg-10 ml-auto">
+
+    <div class="row py-2">
+      <div class="col-12 col-md-9 mx-auto">
+        <div class="card">
+          <div class="card-header bg-gray">
+            <h5 class="card-title d-flex justify-content-between align-items-center">
+              <span>
+                My Profile Edit
+              </span>
+              <i class="fas fa-edit fa-3x orange"></i>
+            </h5>
+          </div>
+          <div class="card-body">
+             <div class="text-center">
+               <i class="fas fa-user fa-5x orange"></i>
+
+               </div>
+
+          <form action="" method="POST" id="register-form">
+            <div class="row p-3">
+
+              <div class="col-12 col-sm-6 col-lg-4 mx-auto form-group">
+                <input type="text" name="firstName" class="form-control" placeholder="First Name" id="firstName"/>
+<span class="d-block error" id="firstNameError"></span>
+              </div>
+
+
+              <div class="col-12 col-sm-6 col-lg-4 mx-auto form-group">
+                <input type="text" name="middleName" class="form-control" placeholder="Middle Name" id="middleName"/>
+<span class="d-block error" id="middleNameError"></span>
+              </div>
+
+
+              <div class="col-12 col-sm-6 col-lg-4 mx-auto form-group">
+                <input type="text" name="lastName" class="form-control" placeholder="Last Name" id="lastName"/>
+<span class="d-block error" id="lastNameError"></span>
+              </div>
+
+            </div>
+
+            <div class="row p-3">
+
+
+              <div class="col-12 col-sm-6 mx-auto form-group">
+                <select name="department" class="form-control" id="department">
+
+                  <option value="">Department</option>
+                </select>
+<span class="d-block error" id="departmentError"></span>
+              </div>
+
+              <div class="col-12 col-sm-6 mx-auto form-group">
+                <select name="level" class="form-control" id="level">
+
+                  <option value="">Level</option>
+                </select>
+<span class="d-block error" id="levelError"></span>
+              </div>
+
+            </div>
+
+
+            <div class="row p-3">
+
+              <div class="col-12 col-sm-6 col-lg-4 mx-auto form-group">
+                <input type="email" name="emailAddress" class="form-control" placeholder="Email Address" id="emailAddress" />
+<span class="d-block error" id="emailAddressError"></span>
+              </div>
+
+              <div class="col-12 col-sm-6 col-lg-4 mx-auto form-group">
+                <input type="password" name="password" class="form-control" placeholder="password" id="password"/>
+<span class="d-block error" id="passwordError"></span>
+              </div>
+
+            </div>
+
+            <div class="p-3 row">
+              <div class="form-group col-12 text-right">
+                <button type="submit" class="ux-btn-full bg-gray green text-uppercase">
+                  update
+                </button>
+              </div>
+            </div>
+          </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>TV

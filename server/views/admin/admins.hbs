@@ -1,0 +1,217 @@
+<span id="admins-page"></span>
+<div class="container-fluid">
+  <div class="row">
+    {{>_adminSidebar}}
+    <div class="col-12 col-lg-9">
+      <div class="row mt-2">
+        <div class="col-12 col-sm-10">
+          <form action="" method="get">
+            <div class="form-group input-group">
+              <input type="search" name="searchQuery" class="form-control" autocomplete="off"
+                placeholder="Search by (lastname, firstname, userrole)" />
+              <span class="input-group-append">
+                <span>
+                  <button type="submit" class="input-group-text bg-green text-light text-uppercase font-weight-bold">
+                    search
+                    <i class="ml-1 fas fa-search"></i>
+                  </button>
+                </span>
+              </span>
+            </div>
+          </form>
+        </div>
+        <div class="col-12 col-sm-2 text-center">
+          <button class="btn btn-warning" data-toggle="modal" data-target="#new-admin-modal">
+            <i class="fas fa-plus mr-2"></i>
+            new
+          </button>
+        </div>
+      </div>
+      <!-- admins -->
+      <div class="row py-3">
+        <div class="col-11 col-sm-12 mx-auto">
+          <div class="card">
+            <div class="card-header bg-black orange d-flex align-items-center justify-content-between">
+              <h4 class="card-title">Administators</h4>
+              <i class="fas fa-user-shield fa-2x"></i>
+            </div>
+            <div class="card-body scrollable" style="max-height: 450px; overflow-y: scroll;" id="admins-pane">
+              <div class="ph-item">
+                <div class="ph-col-12">
+                  <div class="ph-row d-flex justify-content-around">
+                    <div class="ph-col-2 mr-2"></div>
+                    <div class="ph-col-2 mr-2"></div>
+                    <div class="ph-col-2 mr-2"></div>
+                    <div class="ph-col-2 mr-2"></div>
+                    <div class="ph-col-2 mr-2"></div>
+                  </div>
+
+                  <div class="ph-row d-flex justify-content-around">
+                    <div class="ph-col-2 mr-2"></div>
+                    <div class="ph-col-2 mr-2"></div>
+                    <div class="ph-col-2 mr-2"></div>
+                    <div class="ph-col-2 mr-2"></div>
+                    <div class="ph-col-2 mr-2"></div>
+                  </div>
+
+                  <div class="ph-row d-flex justify-content-around">
+                    <div class="ph-col-2 mr-2"></div>
+                    <div class="ph-col-2 mr-2"></div>
+                    <div class="ph-col-2 mr-2"></div>
+                    <div class="ph-col-2 mr-2"></div>
+                    <div class="ph-col-2 mr-2"></div>
+                  </div>
+
+                  <div class="ph-row d-flex justify-content-around">
+                    <div class="ph-col-2 mr-2"></div>
+                    <div class="ph-col-2 mr-2"></div>
+                    <div class="ph-col-2 mr-2"></div>
+                    <div class="ph-col-2 mr-2"></div>
+                    <div class="ph-col-2 mr-2"></div>
+                  </div>
+
+                  <div class="ph-row d-flex justify-content-around">
+                    <div class="ph-col-2 mr-2"></div>
+                    <div class="ph-col-2 mr-2"></div>
+                    <div class="ph-col-2 mr-2"></div>
+                    <div class="ph-col-2 mr-2"></div>
+                    <div class="ph-col-2 mr-2"></div>
+                  </div>
+
+                  <div class="ph-row d-flex justify-content-around">
+                    <div class="ph-col-2 mr-2"></div>
+                    <div class="ph-col-2 mr-2"></div>
+                    <div class="ph-col-2 mr-2"></div>
+                    <div class="ph-col-2 mr-2"></div>
+                    <div class="ph-col-2 mr-2"></div>
+                  </div>
+
+                  <div class="ph-row d-flex justify-content-around">
+                    <div class="ph-col-2 mr-2"></div>
+                    <div class="ph-col-2 mr-2"></div>
+                    <div class="ph-col-2 mr-2"></div>
+                    <div class="ph-col-2 mr-2"></div>
+                    <div class="ph-col-2 mr-2"></div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end of admins -->
+    </div>
+
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="new-admin-modal" data-backdrop="static">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">
+          <span class="badge badge-warning">New</span>
+          <span class="badge badge-danger">Admin</span>
+        </h5>
+        <a href="#" class="close" data-dismiss="modal">&times;</a>
+      </div>
+      <div class="modal-body">
+        <div class="alert hidden text-center d-flex align-items-center justify-content-center" id="new-admin-msg"></div>
+        <form action="" id="create-admin-form" method="POST">
+          <div class="form-group">
+            <input type="text" name="firstName" id="first-name" class="form-control" placeholder="First Name"
+              autocomplete="off">
+            <span class="d-block error" id="firstNameError"></span>
+          </div>
+
+          <div class="form-group">
+            <input type="text" name="lastName" id="last-name" class="form-control" placeholder="Last Name"
+              autocomplete="off">
+            <span class="d-block error" id="lastNameError"></span>
+          </div>
+
+          <div class="form-group">
+            <input type="email" name="emailAddress" id="email-address" class="form-control" placeholder="Email Address"
+              autocomplete="off">
+            <span class="d-block error" id="emailAddressError"></span>
+          </div>
+
+          <div class="form-group">
+            <select name="userRole" id="user-role" class="form-control" aria-readonly="true" readonly="true">
+              <option value="moderator">Moderator</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <input type="password" name="password" id="password" class="form-control" placeholder="Password">
+            <span class="d-block error" id="passwordError"></span>
+          </div>
+
+          <div class="form-group">
+            <input type="password" name="confirmPassword" id="confirmPassword" class="form-control"
+              placeholder="confirm Password">
+            <span class="d-block error" id="confirmPasswordError"></span>
+          </div>
+
+          <div class="form-group text-center">
+            <button type="submit" class="btn btn-success">
+              create account
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-danger" data-dismiss="modal">cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End of Modal -->
+
+<!-- Templates -->
+<script type="mustache/template" id="admins-template">
+<table class="table table-striped text-uppercase" style="font-size: 0.8rem;">
+  <thead class="green">
+    <tr>
+      <th>sn</th>
+      <th>
+        lastname
+      </th>
+      <th>
+        firstname
+      </th>
+      <th>
+        email address
+      </th>
+      <th>
+        user role
+      </th>
+      <th>
+        action
+        <i class="fas fa-cog ml-3"></i>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    \{{#admins}}
+      <tr>
+        <td>\{{sn}}.</td>
+        <td>\{{lastName}}</td>
+        <td>\{{firstName}}</td>
+        <td>\{{emailAddress}}</td>
+        <td>\{{userRole}}</td>
+        <td>
+          <button class="btn btn-sm btn-danger delete-admin-btn" data-id="\{{id}}">
+            delete
+            <i class="fas fa-trash-alt ml-1"></i>
+          </button>
+        </td>
+      </tr>
+    \{{/admins}}
+  </tbody>
+</table>
+</script>
+<!-- End of templates -->

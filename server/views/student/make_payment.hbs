@@ -1,0 +1,49 @@
+<span id="make-payment-page" data-id="{{id}}" data-student-id="{{studentId}}"></span>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-11 col-sm-10 col-md-8 mx-auto p-3">
+      <div class="card">
+        <div class="card-header bg-black text-light">
+          <h5 class="card-title">Make Payment</h5>
+        </div>
+        <div class="card-body bg-light">
+          <div class="black" id="payment-detail-pane">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://js.paystack.co/v1/inline.js" type="application/javascript"></script>
+
+<script type="mustache/template" id="payment-detail-template">
+  \{{#feeLists}}
+    <div class="p-3 bg-gray">
+      <h4 class="text-uppercase">Payment Charge for the following</h4>
+      <div class="text-uppercase py-1 px-3 font-weight-bold">
+        <h6 class="">Fees: \{{Fee.title}}</h6>
+        <h6 class="text-danger">Amount Charged: NGN \{{amount}}</h6>
+      </div>
+    </div>
+    
+  \{{/feeLists}}
+  \{{#students}}
+  <h5 class="py-2">Payment By:</h5>
+  <p class="px-2 py-1 text-uppercase">\{{lastName}} \{{firstName}} \{{middleName}}</p>
+  \{{/students}}
+  
+    <form id="payment-form">
+      \{{#students}}
+      <input type="hidden" name="studentId" value="\{{id}}" />
+      \{{/students}}
+      \{{#feeLists}}
+      <input type="hidden" name="feeListId" value="\{{id}}" />
+      <input type="hidden" name="feeId" value="\{{feeId}}" />
+      \{{/feeLists}}
+      <button type="button" class="btn btn-success text-uppercase font-weight-bold" id="make-payment-btn">
+        continue
+      </button>
+    </form>
+</script>

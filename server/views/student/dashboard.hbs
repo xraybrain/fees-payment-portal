@@ -1,0 +1,202 @@
+<span id="student-dashbaord"></span>
+<div class="container-fluid">
+  <div class="row">
+    {{>_studentSidebar}}
+    <div class="col-12 col-md-9 ml-auto">
+      <!-- Fees payment summary -->
+      <div class="row">
+
+        <div class="col-8 col-sm-6 col-lg-3 mx-auto my-1">
+          <div class="card bg-gray">
+            <div class="card-body text-uppercase font-weight-bold">
+              <span class="d-block text-center">Cash Paid</span>
+              <div class="d-flex justify-content-between align-items-center">
+                <span>
+                  &#8358;
+                </span>
+                <span id="cash-paid">0</span>
+              </div>
+            </div>
+            <div class="card-footer text-right">
+              <a href="" class="ux-btn-ghost">
+                refresh
+                <i class="fas fa-sync-alt"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-8 col-sm-6 col-lg-3 mx-auto my-1">
+          <div class="card bg-gray">
+            <div class="card-body text-uppercase font-weight-bold">
+              <span class="d-block text-center">Cash unPaid</span>
+              <div class="d-flex justify-content-between align-items-center">
+                <span>
+                  &#8358;
+                </span>
+                <span id="cash-unpaid">0</span>
+              </div>
+            </div>
+            <div class="card-footer text-right">
+              <a href="" class="ux-btn-ghost">
+                refresh
+                <i class="fas fa-sync-alt"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-8 col-sm-6 col-lg-3 mx-auto my-1">
+          <div class="card bg-gray">
+            <div class="card-body text-uppercase font-weight-bold text-center">
+              <span class="d-block text-center">Total Paid</span>
+
+              <span id="total-paid">0</span>
+
+            </div>
+            <div class="card-footer text-right">
+              <a href="" class="ux-btn-ghost">
+                refresh
+                <i class="fas fa-sync-alt"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-8 col-sm-6 col-lg-3 mx-auto my-1">
+          <div class="card bg-gray">
+            <div class="card-body text-uppercase font-weight-bold text-center">
+              <span class="d-block text-center">Total unPaid</span>
+
+              <span id="total-unpaid">0</span>
+
+            </div>
+            <div class="card-footer text-right">
+              <a href="" class="ux-btn-ghost">
+                refresh
+                <i class="fas fa-sync-alt"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+      <!-- End of Fees payment summary -->
+      <!-- unpaid fees -->
+      <div class="row py-3">
+        <div class="col-11 col-sm-12 mx-auto">
+          <div class="card">
+            <div class="card-header bg-orange">
+              <h4 class="card-title">UnPaid Fees</h4>
+            </div>
+            <div class="card-body scrollable" id="unpaid-fees-pane" style="max-height: 55vh; overflow-y: scroll">
+
+              <div class="ph-item">
+                <div class="ph-col-12">
+                  <div class="ph-row d-flex justify-content-around">
+                    <div class="ph-col-2 big"></div>
+                    <div class="ph-col-2 big"></div>
+                    <div class="ph-col-2 big"></div>
+                    <div class="ph-col-2 big"></div>
+                  </div>
+
+                  <div class="ph-row d-flex justify-content-around">
+                    <div class="ph-col-2 big"></div>
+                    <div class="ph-col-2 big"></div>
+                    <div class="ph-col-2 big"></div>
+                    <div class="ph-col-2 big"></div>
+                  </div>
+
+                  <div class="ph-row d-flex justify-content-around">
+                    <div class="ph-col-2 big"></div>
+                    <div class="ph-col-2 big"></div>
+                    <div class="ph-col-2 big"></div>
+                    <div class="ph-col-2 big"></div>
+                  </div>
+
+                  <div class="ph-row d-flex justify-content-around">
+                    <div class="ph-col-2 big"></div>
+                    <div class="ph-col-2 big"></div>
+                    <div class="ph-col-2 big"></div>
+                    <div class="ph-col-2 big"></div>
+                  </div>
+
+                  <div class="ph-row d-flex justify-content-around">
+                    <div class="ph-col-2 big"></div>
+                    <div class="ph-col-2 big"></div>
+                    <div class="ph-col-2 big"></div>
+                    <div class="ph-col-2 big"></div>
+                  </div>
+
+                  <div class="ph-row d-flex justify-content-around">
+                    <div class="ph-col-2 big"></div>
+                    <div class="ph-col-2 big"></div>
+                    <div class="ph-col-2 big"></div>
+                    <div class="ph-col-2 big"></div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end of unpaid fees -->
+    </div>
+
+  </div>
+</div>
+
+<!-- Template -->
+<script type="mustache/template" id="unpaid-fees-template">
+<table class="table table-striped">
+  <thead class="green text-uppercase">
+    <tr>
+      <th>level</th>
+      <th>title</th>
+      <th>
+        amount
+        <span class="ml-1 orange">(NGN)</span>
+      </th>
+      <th>
+        action
+        <i class="fas fa-cog ml-3"></i>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    \{{#feeLists}}
+    \{{^Payment}}
+    <tr>
+      <td>
+        \{{Level.name}}
+        \{{^Level}}
+          \{{LevelCategory.name}}
+        \{{/Level}}
+      </td>
+      <td>
+        \{{Fee.title}}
+      </td>
+      <td>
+        \{{amount}}
+      </td>
+      <td>
+        <form action="/student/makepayment/" method="POST">
+          <input type="hidden" name="id" value="\{{id}}" />
+          <button type="submit" class="btn btn-success">
+            make payment
+          </button>
+        </form>
+      </td>
+    </tr>
+    \{{/Payment}}
+  \{{/feeLists}}
+  </tbody>
+</table>
+  
+</script>
+<!-- Enmd of Template -->

@@ -1,0 +1,36 @@
+<div class="container p-5 m-5">
+  <div class="row">
+    <div class="col-10 col-sm-8 col-md-6 col-lg-5 mx-auto">
+      <div class="card">
+        <div class="card-header bg-black text-light">
+          <div class="d-flex align-items-center">
+            <i class="fas fa-exclamation-triangle fa-2x mr-2 text-danger"></i>
+            <h5 class="display-5">
+              Error in database connection
+            </h5>
+          </div>
+        </div>
+        <div class="card-body">
+
+          <div class="alert alert-danger">
+            Sorry, server was unable to connect to the database, please follow the instruction below:
+          </div>
+          <ul>
+            <li>
+              If you are on <span class="font-weight-bold">local server</span> please do ensure that the <span
+                class="font-weight-bold">MYSQL</span> server is on.
+            </li>
+            <li>Ensure that the database <span class="font-weight-bold">fees_payment</span> exists in your <span
+                class="font-weight-bold">MYSQL</span> database
+            </li>
+          </ul>
+
+          <p class="bg-warning text-light text-center">
+            <i class="fas fa-info-circle me-1"></i>
+            if the problem persists contact the developer
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

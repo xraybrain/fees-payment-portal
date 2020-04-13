@@ -1,0 +1,119 @@
+<span id="sign-up-page"></span>
+
+<div class="container-fluid signup py-3">
+  <div class="row">
+    <div class="col-11 col-md-9 mx-auto">
+      <div class="card">
+
+        <div class="card-header d-flex justify-content-between align-items-center bg-black gray">
+          <i class="fas fa-user-plus fa-2x"></i>
+          <h5 class="card-title">Registration Form</h5>
+        </div>
+        <div class="card-body">
+
+          <div class="alert alert-success text-center hidden" id="sign-up-msg">
+          </div>
+
+          <form action="" method="POST" id="register-form">
+            <div class="row">
+
+              <div class="col-12 col-sm-6 col-lg-4 mx-auto form-group">
+                <input type="text" name="firstName" class="form-control" placeholder="First Name" id="firstName"
+                  autocomplete="off" />
+                <span class="d-block error" id="firstNameError"></span>
+              </div>
+
+
+              <div class="col-12 col-sm-6 col-lg-4 mx-auto form-group">
+                <input type="text" name="middleName" class="form-control" placeholder="Middle Name" id="middleName"
+                  autocomplete="off" />
+                <span class="d-block error" id="middleNameError"></span>
+              </div>
+
+
+              <div class="col-12 col-sm-6 col-lg-4 mx-auto form-group">
+                <input type="text" name="lastName" class="form-control" placeholder="Last Name" id="lastName"
+                  autocomplete="off" />
+                <span class="d-block error" id="lastNameError"></span>
+              </div>
+
+            </div>
+
+            <div class="row">
+
+              <div class="col-12 col-sm-6 mx-auto form-group">
+                <select name="departmentId" class="form-control" id="department">
+                  <option value="">Department</option>
+                </select>
+                <span class="d-block error" id="departmentError"></span>
+              </div>
+
+              <div class="col-12 col-sm-6 mx-auto form-group">
+                <select name="levelCategoryId" class="form-control" id="level">
+                  <option value="">Level Category</option>
+                </select>
+                <span class="d-block error" id="levelCategoryIdError"></span>
+              </div>
+
+            </div>
+
+
+            <div class="row">
+
+              <div class="col-12 col-sm-6 mx-auto form-group">
+                <input type="text" name="matricNo" class="form-control" placeholder="Matric No" id="matricNo"
+                  autocomplete="off" />
+                <span class="d-block error" id="matricNoError"></span>
+              </div>
+
+              <div class="col-12 col-sm-6 mx-auto form-group">
+                <input type="email" name="emailAddress" class="form-control" placeholder="Email Address"
+                  id="emailAddress" autocomplete="off" />
+                <span class="d-block error" id="emailAddressError"></span>
+              </div>
+
+            </div>
+
+            <div class="row">
+
+              <div class="col-12 col-sm-6 mx-auto form-group">
+                <input type="password" name="password" class="form-control" placeholder="password" id="password" />
+                <span class="d-block error" id="passwordError"></span>
+              </div>
+
+              <div class="col-12 col-sm-6 mx-auto form-group">
+                <input type="password" class="form-control" placeholder="confirm password" id="confirmPassword" />
+                <span class="d-block error" id="confirmPasswordError"></span>
+              </div>
+
+            </div>
+
+            <div class="p-3 row">
+              <div class="form-group col-12">
+                <button type="submit"
+                  class="ux-btn-full bg-gray green text-uppercase d-block ml-auto d-flex align-items-center">
+                  <span class="mr-2">register</span>
+                  <i class="fas fa-user-plus"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Template -->
+<script type="mustache/template" id="department-option-template">
+  \{{#departments}}
+    <option value="\{{id}}">\{{name}}</option>
+  \{{/departments}}
+</script>
+
+<script type="mustache/template" id="level-option-template">
+  \{{#levelCategories}}
+    <option value="\{{id}}">\{{name}}</option>
+  \{{/levelCategories}}
+</script>
+<!-- End of template -->
