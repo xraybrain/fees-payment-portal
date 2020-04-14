@@ -29,15 +29,15 @@
     </div>
     
   \{{/feeLists}}
-  \{{#students}}
+  \{{#student}}
   <h5 class="py-2">Payment By:</h5>
   <p class="px-2 py-1 text-uppercase">\{{lastName}} \{{firstName}} \{{middleName}}</p>
-  \{{/students}}
+  \{{/student}}
   
     <form id="payment-form">
-      \{{#students}}
+      \{{#student}}
       <input type="hidden" name="studentId" value="\{{id}}" />
-      \{{/students}}
+      \{{/student}}
       \{{#feeLists}}
       <input type="hidden" name="feeListId" value="\{{id}}" />
       <input type="hidden" name="feeId" value="\{{feeId}}" />
