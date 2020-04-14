@@ -52,16 +52,16 @@
             My Profile
           </a>
           <a href="/student/"
-            class="dropdown-item d-flex align-items-center text-white text-uppercase justify-content-between">
-            <i class="fas fa-th mr-1 orange"></i>
+            class="dropdown-item d-flex align-items-center text-white text-uppercase justify-content-center justify-content-md-between">
+            <i class="fas fa-th mr-2 orange"></i>
             <span>
               dashboard
             </span>
           </a>
           <a href="/signout/"
-            class="dropdown-item d-flex align-items-center text-white text-uppercase justify-content-between text-warning font-weight-bold mt-2">
+            class="dropdown-item d-flex align-items-center text-white text-uppercase justify-content-center justify-content-md-between text-warning font-weight-bold mt-2">
             signout
-            <i class="fas fa-sign-out-alt"></i>
+            <i class="fas fa-sign-out-alt ml-2"></i>
           </a>
           {{/if}}
           {{#if (isEqual user.role 'Admin')}}
@@ -70,16 +70,16 @@
             My Profile
           </a>
           <a href="/admin/"
-            class="dropdown-item d-flex align-items-center text-white text-uppercase justify-content-between">
-            <i class="fas fa-th mr-1 orange"></i>
+            class="dropdown-item d-flex align-items-center text-white text-uppercase justify-content-center justify-content-md-between">
+            <i class="fas fa-th mr-2 orange"></i>
             <span>
               dashboard
             </span>
           </a>
           <a href="/admin/signout/"
-            class="dropdown-item d-flex align-items-center text-white text-uppercase justify-content-between text-warning font-weight-bold mt-2">
+            class="dropdown-item d-flex align-items-center text-white text-uppercase justify-content-center justify-content-md-between text-warning font-weight-bold mt-2">
             signout
-            <i class="fas fa-sign-out-alt"></i>
+            <i class="fas fa-sign-out-alt ml-2"></i>
           </a>
           {{/if}}
           {{else}}

@@ -897,11 +897,11 @@ $(document).ready(function() {
       console.log(data);
       var studentId = $('#make-payment-page').attr('data-student-id');
       if (studentId) {
-        modules.getStudents('?id=' + studentId, function(studentData) {
+        modules.getCurrentUser(null, function(studentData) {
           console.log(studentData);
 
           Component.create(
-            { feeLists: data.feeLists, students: studentData.students },
+            { feeLists: data.feeLists, student: studentData},
             '#payment-detail-template',
             '#payment-detail-pane'
           );
@@ -909,7 +909,7 @@ $(document).ready(function() {
           Loading.hide('#body');
 
           $('#make-payment-btn').on('click', function(e) {
-            makePayment(studentData.students[0], data.feeLists[0]);
+            makePayment(studentData, data.feeLists[0]);
           });
         });
       }

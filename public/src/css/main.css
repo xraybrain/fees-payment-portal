@@ -28,16 +28,16 @@ body {
   transform: translateX(-50%);
 }
 
-.flash-box.error{
+.flash-box.error {
   background-color: #e62424;
-  color: #fff!important;
+  color: #fff !important;
   font-size: 1rem;
   box-shadow: 2px 4px 8px #df6b6b;
 }
 
-.flash-box.success{
+.flash-box.success {
   background-color: #20a031;
-  color: #fff!important;
+  color: #fff !important;
   font-size: 1rem;
   box-shadow: 2px 4px 8px #55804c;
 }
@@ -223,7 +223,7 @@ body {
   background: #1e272e;
 }
 
-.clock-widget{
+.clock-widget {
   background: #1e272e;
   padding: 5px;
   width: 50%;
@@ -274,9 +274,9 @@ body {
   }
   .sidebar {
     position: static;
-    height: fit-content;
+    height: auto!important;
   }
-  #slider img{
+  #slider img {
     width: 100%;
   }
 }
