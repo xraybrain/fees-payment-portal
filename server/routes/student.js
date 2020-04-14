@@ -5,10 +5,8 @@ const {
   showFees,
   showProfile,
   showEditProfile,
-  showResetPassword,
   signIn,
-  showMakePayment,
-  makePayment
+  showMakePayment
 } = require('../controller/studentController');
 const { ensureAuthenticated, ensureIsApproved } = require('../src/auth');
 module.exports = app => {
@@ -23,7 +21,12 @@ module.exports = app => {
     showReceipts
   );
 
-  app.get('/student/receipt/:id/', showReceipt);
+  app.get(
+    '/student/receipt/:id/',
+    ensureAuthenticated,
+    ensureIsApproved,
+    showReceipt
+  );
 
   app.get('/student/fees/', ensureAuthenticated, ensureIsApproved, showFees);
 
@@ -34,9 +37,12 @@ module.exports = app => {
     showProfile
   );
 
-  app.get('/student/edit/profile/', showEditProfile);
-
-  app.get('/student/reset/password/', showResetPassword);
+  app.get(
+    '/student/edit/profile/',
+    ensureAuthenticated,
+    ensureIsApproved,
+    showEditProfile
+  );
 
   app.post(
     '/student/makepayment/',
